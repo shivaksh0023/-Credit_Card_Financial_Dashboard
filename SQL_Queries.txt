@@ -1,0 +1,31 @@
+COPY cc_detail
+FROM 'D:\credit_card.csv' 
+DELIMITER ','  					 /*csv file is comma-separated*/
+CSV HEADER;						  /* Need the header of the csv file*/
+
+SET datestyle TO 'ISO, DMY';     
+									/* to change the setting of date/time field*/
+
+Select * from cust_detail
+
+
+COPY cust_detail
+FROM 'D:\customer.csv'
+DELIMITER ','
+CSV HEADER;
+
+Select count(*) from cust_detail    /*Total number of rows in the table after new data is added*/
+
+COPY cc_detail
+FROM 'D:\cc_add.csv' 
+DELIMITER ','  					 /*csv file is comma-separated*/
+CSV HEADER;						 /*New details are added*/
+
+
+COPY cust_detail
+FROM 'D:\cust_add.csv'
+DELIMITER ','
+CSV HEADER;
+
+Select * from cc_detail   
+Select * from cust_detail
